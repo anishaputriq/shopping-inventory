@@ -3,6 +3,141 @@ Anisha Putri Qonitah - 2206083256
 PBP D
 
 <details>
+<summary> Tugas 9 </summary>
+
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Kita dapat melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Ini sering disebut sebagai "deserialization" atau "parsing" data JSON menjadi struktur data yang dapat digunakan oleh program. Namun, membuat model atau struktur data terlebih dahulu seringkali disarankan karena membantu dalam pengorganisasian data dan memudahkan manipulasi data dalam kode.
+
+Pengambilan data JSON tanpa membuat model terlebih dahulu bisa dilakukan dengan memanfaatkan tipe data dinamis yang disediakan oleh banyak bahasa pemrograman. Ini memungkinkan kita untuk membaca data JSON dan menggunakan tipe data yang sesuai untuk menyimpannya. Namun, menggunakan model atau struktur data akan memberikan manfaat seperti validasi tipe data, membantu dokumentasi, dan mempermudah pengelolaan data
+
+## Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+CookieRequest  merupakan sebuah objek atau kelas yang digunakan untuk mengirim permintaan HTTP yang memiliki informasi atau data cookie. Cookie adalah mekanisme yang digunakan untuk menyimpan informasi di sisi klien (seperti browser) dan digunakan untuk mengidentifikasi klien saat melakukan permintaan ke server.
+
+Instance CookieRequest perlu dibagikan ke semua komponen di aplikasi Flutter jika informasi cookie yang dikirim atau diterima dari server diperlukan secara global dalam aplikasi. Ini memungkinkan berbagai bagian dari aplikasi untuk menggunakan informasi yang sama dan mengirim permintaan HTTP yang memiliki cookie yang sesuai.
+
+## Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+Mekanisme ini melibatkan pengambilan data dari server dalam format JSON, deserialisasi data JSON ke dalam struktur data yang sesuai (dalam Flutter, biasanya menggunakan json.decode()), dan kemudian menggunakan data tersebut untuk memperbarui widget-widget pada aplikasi Flutter. Setelah data di-decode, kita dapat menggunakannya untuk mengisi model atau struktur data yang kemudian digunakan dalam widget seperti ListView, GridView, atau Text untuk menampilkan data.
+
+## Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+1. Input Data Akun pada Flutter: Pengguna memasukkan informasi akun seperti nama pengguna dan kata sandi pada aplikasi Flutter.
+2. Permintaan Autentikasi: Flutter membuat permintaan HTTP ke backend Django dengan informasi yang dimasukkan pengguna.
+3. Validasi Autentikasi di Django: Django memvalidasi informasi yang diterima dari Flutter, biasanya dengan menggunakan mekanisme seperti JSON Web Tokens (JWT) atau sesi. Jika informasi autentikasi benar, Django mengembalikan token atau memberikan akses ke aplikasi.
+4. Token/Kode Akses: Jika autentikasi berhasil, Django mengembalikan token atau kode akses ke Flutter.
+5. Tampilan Menu pada Flutter: Flutter menggunakan token atau kode akses yang diterima dari Django untuk memverifikasi identitas dan memberikan akses ke halaman atau menu yang sesuai untuk pengguna yang terotentikasi.
+
+## Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+### File 'product'
+
+1. **dart:convert**: Digunakan untuk mengonversi data JSON menjadi objek Dart dan sebaliknya.
+2. **productFromJson** dan **productToJson**: Fungsi untuk mengonversi data JSON menjadi objek Dart dan sebaliknya.
+3. **Kelas Product dan Fields**: Merepresentasikan produk beserta bidang-bidangnya dengan metode untuk konversi JSON.
+4. **Enum Model**: Digunakan untuk menentukan model produk.
+
+### File 'list_product'
+
+1. **MaterialApp, Scaffold, AppBar**: Konfigurasi tema dan tata letak dasar aplikasi.
+2. **FutureBuilder, Center, CircularProgressIndicator**: Menangani data asinkron dan menampilkan indikator loading.
+3. **Column, Text, SizedBox, ListView.builder, GestureDetector**: Menampilkan daftar produk dengan fitur interaksi.
+4. **ElevatedButton, Navigator, MaterialPageRoute**: Navigasi ke halaman detail produk.
+
+### File 'login'
+
+1. **MaterialApp, Scaffold, AppBar, Container, Column, TextField, SizedBox, ElevatedButton, Text, SnackBar, AlertDialog, TextButton**: Halaman login, menampilkan input dan pesan interaksi.
+2. **pbp_django_auth**: Otentikasi pengguna menggunakan backend Django.
+3. **CookieRequest**: Membuat permintaan HTTP dengan otentikasi berbasis cookie.
+4. **Navigator**: Navigasi antar layar setelah autentikasi.
+
+### File 'menu'
+
+1. **MaterialApp, Scaffold, AppBar, Text, SingleChildScrollView, Padding, Column, GridView.count**: Menampilkan menu toko dalam kisi.
+2. **ShopCard, LeftDrawer**: Widget kustom untuk kartu toko dan laci kiri.
+
+### File 'product_detail_page'
+
+1. **MaterialApp, Scaffold, AppBar, LeftDrawer, SingleChildScrollView, Column, Text, SizedBox, ElevatedButton, Image.network**: Menampilkan detail produk.
+
+### File 'shoplist_form'
+
+1. **MaterialApp, Scaffold, AppBar, Center, Text, Color, LeftDrawer, Form, GlobalKey, TextFormField, ElevatedButton, ButtonStyle, MaterialStateProperty, ScaffoldMessenger, SnackBar, Navigator, AlertDialog**: Membuat formulir penambahan item.
+
+### File 'left_drawer'
+
+1. **Drawer, ListView, DrawerHeader, Column, Text, Padding, ListTile, Icon, Navigator.pushReplacement, MaterialPageRoute**: Laci kiri dengan navigasi antar layar.
+
+### File 'shop_card'
+
+1. **Material, InkWell, ScaffoldMessenger, SnackBar, Navigator, PageRoute, BuildContext, Container, Center, Column, Icon, Padding, Text, Provider**: Menampilkan kartu toko dengan interaksi.
+
+### File 'item_list'
+
+1. **Scaffold, AppBar, Color, LeftDrawer, ListView.builder, ListTile, Text, Product**: Menampilkan daftar produk.
+
+### File 'main'
+
+1. **MaterialApp, Provider, CookieRequest, LoginPage**: Konfigurasi root aplikasi dan halaman utama.
+
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+
+### Memastikan deployment proyek tugas Django kamu telah berjalan dengan baik.
+1. Lakukan penyesuaian dengan mambuat app baru authentication dan fungsi lainnya 
+2. git add commit push 
+3. deploy proyek django
+
+### Membuat halaman login pada proyek tugas Flutter.
+1. Buat halaman login.dart di folder screens
+2. isi file login dengan kode class LoginApp
+3. Pada file main.dart, pada Widget MaterialApp(...), ubah home: MyHomePage() menjadi home: LoginPage()
+
+### Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter.
+1. buat django app baru bernama authentication dan tambahkan ke settings.py
+2. buat fungsi login dan logout di authentication/views.py
+3. tambahkan corheaders
+4. deploy proyek
+5. Di flutter install package pbp_django_auth
+6. memodifikasi root widget untuk menyediakan CookieRequest library ke semua child widgets dengan menggunakan Provider
+
+### Membuat model kustom sesuai dengan proyek aplikasi Django.
+1. Buka endpoint JSON django 
+2. Salinlah data JSON dan buka situs web Quicktype.
+3. Pada situs web Quicktype, ubahlah setup name menjadi Product, source type menjadi JSON, dan language menjadi Dart.
+4. Tempel data JSON yang telah disalin sebelumnya ke dalam textbox yang tersedia pada Quicktype.
+5. Buat file baru pada folder lib/models dengan nama product.dart, dan tempel kode yang sudah disalin dari Quicktype.
+
+### Membuat halaman yang berisi daftar semua item yang terdapat pada endpoint JSON di Django yang telah kamu deploy.
+1. Lakukan flutter pub add http pada terminal proyek Flutter untuk menambahkan package http.
+2. Tambahkan kode berikut untuk memperbolehkan akses Internet pada aplikasi Flutter
+3. Buatlah file baru pada folder lib/screens dengan nama list_product.dart.
+4. Buat kelas ProductPage dan import library yang dibutuhkan
+5. Tambahkan  halaman list_product.dart ke widgets/left_drawer.dart
+6. Ubah fungsi tombol Lihat Produk pada halaman utama agar mengarahkan ke halaman ProductPage
+7. Impor file yang dibutuhkan saat menambahkan ProductPage ke left_drawer.dart dan shop_card.dart.
+
+Integrasi Form Flutter Dengan Layanan Django
+1. buat fungsi baru di main view.py Django create_product_flutter
+2. tambah path baru
+3. Deploy ulang aplikasi 
+4. di Flutter Hubungkan halaman shoplist_form.dart dengan CookieRequest (final request = context.watch<CookieRequest>();)
+
+Implementasi Fitur logout
+1. buat views.py untuk logout di django
+2. tambahkan path 
+3. di flutter, di shop_card.dart tambahkan final request = context.watch<CookieRequest>();
+4. ubah widget Inkwell ke async
+
+### Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.
+1. buat file baru di screen dengan nama product_detail.dart
+2. tambahkan kode di list_product.dart untuk onTap agar dialihkan ke page detail
+3. buat page detail dan import model yang dibutuhkan
+4. buat button kembali agar dialihkan ke list product
+
+### Melakukan add-commit-push ke GitHub.
+
+</details>
+
+<details>
 <summary> Tugas 8 </summary>
 
 ## Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!

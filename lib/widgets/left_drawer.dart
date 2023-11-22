@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_inventory/screens/list_product.dart';
 import 'package:shopping_inventory/screens/menu.dart';
 import 'package:shopping_inventory/screens/shoplist_form.dart';
 import 'package:shopping_inventory/screens/shoplist_item.dart';
@@ -61,17 +62,28 @@ class LeftDrawer extends StatelessWidget {
                 );
               },
             ),
+            // ListTile(
+            //   leading: const Icon(Icons.view_carousel_outlined),
+            //   title: const Text('Lihat Produk'),
+            //   // Bagian redirection ke ShopFormPage
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const ShopItemPage()),
+            //     );
+            //   },
+            // ),
             ListTile(
-              leading: const Icon(Icons.view_carousel_outlined),
-              title: const Text('Lihat Produk'),
-              // Bagian redirection ke ShopFormPage
+              leading: const Icon(Icons.shopping_basket),
+              title: const Text('Daftar Produk'),
               onTap: () {
-                Navigator.push(
+                  // Route menu ke halaman produk
+                  Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShopItemPage()),
-                );
+                  MaterialPageRoute(builder: (context) => const ProductPage()),
+                  );
               },
-            ),
+          ),
         ],
       ),
     );
